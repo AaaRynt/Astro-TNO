@@ -1,4 +1,5 @@
 /**
+raw
 !src
 !astro.config.mjs
-raw
+!*.md

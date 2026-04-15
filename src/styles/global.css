@@ -1,0 +1,47 @@
+/* stylelint-disable-next-line import-notation */
+@import 'tailwindcss';
+
+@font-face {
+  font-family: Aldrich;
+  src: url('/font/Aldrich-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: fzrzhm;
+  src: url('/font/fzzhengheis.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: Aldrich, fzrzhm, sans-serif;
+  color: var(--color-mist-300);
+  cursor: url('/cursor/bf3_cursor.cur'), auto;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(6 16 23) 0,
+    rgb(6 16 23) 5px,
+    rgb(5 18 21) 5px,
+    rgb(5 18 21) 7px,
+    rgb(6 16 23) 7px,
+    rgb(6 16 23) 11px,
+    rgb(5 18 21) 11px,
+    rgb(5 18 21) 14px
+  );
+}
+
+a {
+  cursor: url('/cursor/bf3_linkselect.cur'), pointer;
+  color: var(--color-teal-400);
+  text-shadow: 0 0 3px rgb(34 200 247 / 80%);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  cursor: url('/cursor/bf3_text.cur'), text;
+}

@@ -1,0 +1,15 @@
+---
+import zh from '../../public/json/zh.json'
+---
+
+<aside>
+  <ul>
+    {
+      zh.map((item) => (
+        <li>
+          <a href={item.id.toString()}>{item.name.default}</a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
