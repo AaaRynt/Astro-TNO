@@ -15,6 +15,14 @@
   font-style: normal;
 }
 
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-teal-600);
+}
+
 html {
   font-family: Aldrich, fzrzhm, sans-serif;
   color: var(--color-mist-300);
@@ -34,12 +42,6 @@ html {
 
 a {
   cursor: url('/cursor/bf3_linkselect.cur'), pointer;
-  color: var(--color-teal-400);
-  text-shadow: 0 0 3px rgb(34 200 247 / 80%);
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 input {

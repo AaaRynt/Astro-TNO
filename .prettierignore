@@ -3,3 +3,4 @@ raw
 !src
 !astro.config.mjs
 !*.md
+!public

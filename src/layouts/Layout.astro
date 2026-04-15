@@ -15,9 +15,9 @@ import Aside from './Aside.astro'
     <meta name="generator" content={Astro.generator} />
     <title>Cities in The New Order</title>
   </head>
-  <body class="flex min-h-full flex-col">
+  <body class="flex h-full flex-col">
     <Header />
-    <main class="flex flex-1 flex-row">
+    <main class="flex min-h-0 flex-1 flex-row items-stretch">
       <Aside />
       <slot />
     </main>

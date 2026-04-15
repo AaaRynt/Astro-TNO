@@ -2,12 +2,17 @@
 import zh from '../../public/json/zh.json'
 ---
 
-<aside>
+<aside class="w-max-20 h-full flex-1 overflow-y-auto border-r px-2 py-3">
   <ul>
     {
       zh.map((item) => (
         <li>
-          <a href={item.id.toString()}>{item.name.default}</a>
+          <a
+            href={item.id.toString()}
+            class="text-lg text-teal-500 text-shadow-teal-400/80 hover:text-shadow-[0_0_3px]"
+          >
+            {item.name.default}
+          </a>
         </li>
       ))
     }

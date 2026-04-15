@@ -1,0 +1,30 @@
+---
+import '../styles/global.css'
+import zh from '../../public/json/zh.json'
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+
+export async function getStaticPaths() {
+  return zh.map((item, index) => ({
+    params: {
+      id: String(index + 1),
+    },
+    props: {
+      item,
+    },
+  }))
+}
+
+const { item } = Astro.props
+---
+
+<Layout>
+  <section class="flex h-full w-160 flex-4 flex-col gap-6 overflow-y-auto p-8">
+    <h2 class="text-4xl font-bold text-mist-200">{item.name.default}</h2>
+    <img src={`/img/state_lore_img_${item.id}.png`} class="w-160" />
+    <article class="flex w-160 flex-col gap-2 indent-8">
+      {item.desc.default.split('\\n\\n').map((p) => <p>{p}</p>)}
+    </article>
+    <Nav item={item} zh={zh} />
+  </section>
+</Layout>
