@@ -2,7 +2,7 @@
 import zh from '../../public/json/zh.json'
 ---
 
-<aside class="w-max-20 h-full flex-1 overflow-y-auto border-r px-2 py-3">
+<aside data-aside-scroll class="w-max-20 h-full flex-1 overflow-y-auto border-r px-2 py-3">
   <ul>
     {
       zh.map((item) => (
@@ -18,3 +18,57 @@ import zh from '../../public/json/zh.json'
     }
   </ul>
 </aside>
+
+<script is:inline>
+  //THX, Codex
+  ;(() => {
+    const SELECTOR = '[data-aside-scroll]'
+    const STORAGE_KEY = 'aside-scroll-top'
+    const MANAGER_KEY = '__asideScrollManager'
+
+    const getAside = () => document.querySelector(SELECTOR)
+    const save = (el) => {
+      if (!(el instanceof HTMLElement)) return
+      sessionStorage.setItem(STORAGE_KEY, String(el.scrollTop))
+    }
+    const restore = (el) => {
+      if (!(el instanceof HTMLElement)) return
+      const saved = sessionStorage.getItem(STORAGE_KEY)
+      if (saved === null) return
+      const top = Number(saved)
+      if (Number.isNaN(top)) return
+      requestAnimationFrame(() => {
+        el.scrollTop = top
+      })
+    }
+
+    if (!window[MANAGER_KEY]) {
+      const manager = {
+        aside: null,
+        cleanup: null,
+        bind() {
+          if (typeof this.cleanup === 'function') this.cleanup()
+
+          const el = getAside()
+          this.aside = el instanceof HTMLElement ? el : null
+          if (!this.aside) {
+            this.cleanup = null
+            return
+          }
+
+          const onScroll = () => save(this.aside)
+          this.aside.addEventListener('scroll', onScroll, { passive: true })
+          this.cleanup = () => this.aside?.removeEventListener('scroll', onScroll)
+          restore(this.aside)
+        },
+      }
+
+      document.addEventListener('astro:before-swap', () => save(manager.aside))
+      document.addEventListener('astro:after-swap', () => manager.bind())
+      window.addEventListener('beforeunload', () => save(manager.aside))
+      window[MANAGER_KEY] = manager
+    }
+
+    window[MANAGER_KEY].bind()
+  })()
+</script>

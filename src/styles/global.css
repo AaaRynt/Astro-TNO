@@ -3,14 +3,14 @@
 
 @font-face {
   font-family: Aldrich;
-  src: url('/font/Aldrich-Regular.ttf') format('truetype');
+  src: url('/Astro-TNO/font/Aldrich-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: fzrzhm;
-  src: url('/font/fzzhengheis.ttf') format('truetype');
+  src: url('/Astro-TNO/font/fzzhengheis.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,7 +26,7 @@
 html {
   font-family: Aldrich, fzrzhm, sans-serif;
   color: var(--color-mist-300);
-  cursor: url('/cursor/bf3_cursor.cur'), auto;
+  cursor: url('/Astro-TNO/cursor/bf3_cursor.cur'), auto;
   background: repeating-linear-gradient(
     to bottom,
     rgb(6 16 23) 0,
@@ -41,9 +41,9 @@ html {
 }
 
 a {
-  cursor: url('/cursor/bf3_linkselect.cur'), pointer;
+  cursor: url('/Astro-TNO/cursor/bf3_linkselect.cur'), pointer;
 }
 
 input {
-  cursor: url('/cursor/bf3_text.cur'), text;
+  cursor: url('/Astro-TNO/cursor/bf3_text.cur'), text;
 }

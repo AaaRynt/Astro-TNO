@@ -11,7 +11,7 @@ const next = zh[(item.id + len) % len]
 <div class="flex w-160 flex-row gap-8">
   <!-- prev -->
   <a
-    href={`/${prev.id}`}
+    href={`/Astro-TNO/${prev.id}`}
     class="flex flex-1 flex-row items-center gap-2 py-4 pl-12 outline-1 outline-mist-500 hover:outline-mist-100"
   >
     <ArrowLeft />
@@ -19,20 +19,20 @@ const next = zh[(item.id + len) % len]
     <div class="flex flex-col gap-1">
       <span class="text-mist-400">上一章</span>
       <h3 class="text-2xl font-semibold text-mist-200">
-        {prev.name.default}
+        {prev.name.default}{prev.id}
       </h3>
     </div>
   </a>
 
   <!-- next -->
   <a
-    href={`/${next.id}`}
+    href={`/Astro-TNO/${next.id}`}
     class="flex flex-1 flex-row items-center justify-end gap-2 py-4 pr-12 outline-1 outline-mist-500 hover:outline-mist-100"
   >
     <div class="flex flex-col gap-1 text-right">
       <span class="text-mist-400">下一章</span>
       <h3 class="text-2xl font-semibold text-mist-200">
-        {next.name.default}
+        {next.name.default}{next.id}
       </h3>
     </div>
 
