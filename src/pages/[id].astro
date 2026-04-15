@@ -16,14 +16,59 @@ export async function getStaticPaths() {
 }
 
 const { item } = Astro.props
+
+type ParsedPart = { text: string; className?: string }
+
+const COLOR_CLASS_BY_TAG = {
+  R: 'text-red-400',
+  Y: 'text-yellow-400',
+} as const
+
+const COLOR_TAG_RE = /§([RY])(.*?)§!/gi
+
+function parseColorTags(text: string): ParsedPart[] {
+  const parts: ParsedPart[] = []
+  let cursor = 0
+
+  for (const match of text.matchAll(COLOR_TAG_RE)) {
+    const start = match.index ?? 0
+    const full = match[0]
+    const tag = match[1].toUpperCase() as keyof typeof COLOR_CLASS_BY_TAG
+    const content = match[2]
+
+    if (start > cursor) {
+      parts.push({ text: text.slice(cursor, start) })
+    }
+
+    parts.push({ text: content, className: COLOR_CLASS_BY_TAG[tag] })
+    cursor = start + full.length
+  }
+
+  if (cursor < text.length) {
+    parts.push({ text: text.slice(cursor) })
+  }
+
+  return parts
+}
+
+const parsedParagraphs = item.desc.default.split('\\n\\n').map(parseColorTags)
 ---
 
+<title>{item.name.default}</title>
 <Layout>
-  <section class="flex h-full w-160 flex-4 flex-col gap-6 overflow-y-auto p-8">
+  <section class="flex h-full flex-3 flex-col gap-6 overflow-y-auto p-8">
     <h2 class="text-4xl font-bold text-mist-200">{item.name.default}</h2>
     <img src={`/Astro-TNO/img/state_lore_img_${item.id}.png`} class="w-160" />
     <article class="flex w-160 flex-col gap-2 indent-8">
-      {item.desc.default.split('\\n\\n').map((p) => <p>{p}</p>)}
+      {
+        parsedParagraphs.map((parts) => (
+          <p>
+            {parts.map((part) =>
+              part.className ? <span class={part.className}>{part.text}</span> : part.text,
+            )}
+          </p>
+        ))
+      }
     </article>
     <Nav item={item} zh={zh} />
   </section>

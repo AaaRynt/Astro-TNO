@@ -1,15 +1,21 @@
 ---
 import zh from '../../public/json/zh.json'
+const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
 ---
 
-<aside data-aside-scroll class="w-max-20 h-full flex-1 overflow-y-auto border-r px-2 py-3">
+<aside data-aside-scroll class="h-full flex-1 overflow-y-auto border-r py-4 pl-4 text-lg">
   <ul>
     {
       zh.map((item) => (
-        <li>
+        <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': currentId === item.id.toString() }}>
           <a
             href={item.id.toString()}
-            class="text-lg text-teal-500 text-shadow-teal-400/80 hover:text-shadow-[0_0_3px]"
+            class:list={[
+              'block',
+              currentId === item.id.toString()
+                ? 'text-xl text-[#061016]'
+                : 'text-teal-500 text-shadow-teal-400/80 hover:text-shadow-[0_0_3px]',
+            ]}
           >
             {item.name.default}
           </a>

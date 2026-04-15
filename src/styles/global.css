@@ -26,7 +26,7 @@
 html {
   font-family: Aldrich, fzrzhm, sans-serif;
   color: var(--color-mist-300);
-  cursor: url('/Astro-TNO/cursor/bf3_cursor.cur'), auto;
+  cursor: url('/Astro-TNO/cursor/exploration.png'), auto;
   background: repeating-linear-gradient(
     to bottom,
     rgb(6 16 23) 0,
@@ -41,9 +41,5 @@ html {
 }
 
 a {
-  cursor: url('/Astro-TNO/cursor/bf3_linkselect.cur'), pointer;
-}
-
-input {
-  cursor: url('/Astro-TNO/cursor/bf3_text.cur'), text;
+  cursor: url('/Astro-TNO/cursor/attack_move.png'), pointer;
 }

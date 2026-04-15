@@ -4,8 +4,9 @@ import { ArrowLeft, ArrowRight } from './svg/index.astro'
 const { item, zh } = Astro.props
 
 const len = zh.length
-const prev = zh[(item.id - 2 + len) % len]
-const next = zh[(item.id + len) % len]
+const current = zh.findIndex((entry: { id: any }) => entry.id === item.id)
+const prev = zh[(current + len - 1) % len]
+const next = zh[(current + 1) % len]
 ---
 
 <div class="flex w-160 flex-row gap-8">
@@ -15,15 +16,13 @@ const next = zh[(item.id + len) % len]
     class="flex flex-1 flex-row items-center gap-2 py-4 pl-12 outline-1 outline-mist-500 hover:outline-mist-100"
   >
     <ArrowLeft />
-
     <div class="flex flex-col gap-1">
       <span class="text-mist-400">上一章</span>
       <h3 class="text-2xl font-semibold text-mist-200">
-        {prev.name.default}{prev.id}
+        {prev.name.default}
       </h3>
     </div>
   </a>
-
   <!-- next -->
   <a
     href={`/Astro-TNO/${next.id}`}
@@ -32,10 +31,9 @@ const next = zh[(item.id + len) % len]
     <div class="flex flex-col gap-1 text-right">
       <span class="text-mist-400">下一章</span>
       <h3 class="text-2xl font-semibold text-mist-200">
-        {next.name.default}{next.id}
+        {next.name.default}
       </h3>
     </div>
-
     <ArrowRight />
   </a>
 </div>
