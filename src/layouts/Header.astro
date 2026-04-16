@@ -4,19 +4,19 @@ import { AstroIcon, Github, Languages } from '../components/svg/index.astro'
 
 <header class="flex flex-row items-center justify-between gap-4 bg-teal-950 px-4 py-2">
   <div class="flex flex-row items-center gap-2">
-    <a href="https://tno.wiki/wiki/TNOpediA" target="_blank">
+    <a href="https://tno.wiki/wiki/TNOpediA" target="_blank" aria-label="TNOpediA">
       <img
-        src={`${import.meta.env.BASE_URL}The_New_Order_Logo.png`}
-        alt="The_New_Order_Logo"
+        src={`${import.meta.env.BASE_URL}TNOpediA_Logo.png`}
+        alt="The New Order Logo"
         class="h-8"
       />
     </a>
     <span class="text-teal-400">/</span>
-    <a href="https://github.com/AaaRynt/Astro-TNO" target="_blank">
+    <a href="https://github.com/AaaRynt/Astro-TNO" target="_blank" aria-label="GitHub">
       <Github />
     </a>
     <span class="text-teal-400">/</span>
-    <a href="https://astro.build/" target="_blank">
+    <a href="https://astro.build/" target="_blank" aria-label="Astro">
       <AstroIcon />
     </a>
   </div>

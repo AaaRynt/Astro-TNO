@@ -9,14 +9,12 @@ import Aside from './Aside.astro'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body class="flex h-full flex-col">
     <Header />
-    <main class="flex min-h-0 flex-1 flex-row items-stretch">
+    <main class="relative flex min-h-0 w-full flex-1 justify-center">
       <Aside />
       <slot />
     </main>

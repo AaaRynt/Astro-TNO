@@ -43,3 +43,7 @@ html {
 a {
   cursor: url('/Astro-TNO/cursor/attack_move.png'), pointer;
 }
+
+.nav-item {
+  @apply flex flex-1 flex-row items-center gap-2 py-4 outline-1 outline-mist-500 transition text-shadow-teal-400/80 hover:text-teal-500 hover:outline-mist-100 hover:text-shadow-[0_0_3px];
+}
