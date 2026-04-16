@@ -1,11 +1,74 @@
 ---
-import Welcome from '../components/Welcome.astro'
 import Layout from '../layouts/Layout.astro'
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <Welcome />
+  <section class="flex flex-3 flex-col gap-10 p-10">
+    <!-- 标题区 -->
+    <header class="flex flex-col gap-3 border-b border-mist-700 pb-6">
+      <p class="text-sm tracking-[0.3em] text-mist-500">CLASSIFIED ARCHIVE · 1962</p>
+
+      <h1 class="text-6xl font-bold tracking-wider text-mist-200">THE NEW ORDER</h1>
+
+      <p class="text-xl text-mist-400">城市档案索引 · Cities Archive</p>
+    </header>
+
+    <!-- 核心介绍 -->
+    <div class="max-w-3xl indent-8 leading-relaxed text-mist-300">
+      <p>这不是一个和平的时代。</p>
+
+      <p>
+        1962年，世界被胜利者瓜分，却没有真正的赢家。大日耳曼帝国统治欧洲，
+        日本帝国控制东方，美国在阴影中维持秩序。三极对峙之下，人类文明悬于核毁灭的边缘。
+      </p>
+
+      <p>
+        本站收录该世界观下的重要城市档案。从权力中心到边缘殖民地，
+        每一座城市，都是秩序崩塌与权力运作的缩影。
+      </p>
+    </div>
+
+    <!-- 分割线 -->
+    <div class="border-t border-mist-800"></div>
+
+    <!-- 操作区 -->
+    <div class="flex flex-row items-center gap-8">
+      <a
+        href={`${import.meta.env.BASE_URL}1`}
+        class="border border-mist-500 px-6 py-3 text-mist-200 transition hover:border-mist-200 hover:bg-mist-800/30"
+      >
+        ▶ 进入档案
+      </a>
+
+      <a
+        href={`${import.meta.env.BASE_URL}About`}
+        class="text-mist-400 underline-offset-4 hover:underline"
+      >
+        关于本项目
+      </a>
+    </div>
+
+    <!-- 信息块（像档案标签） -->
+    <div class="grid max-w-3xl gap-4 text-sm text-mist-400 md:grid-cols-3">
+      <div class="border border-mist-800 p-3">
+        <p class="text-mist-500">TYPE</p>
+        <p>世界观档案</p>
+      </div>
+
+      <div class="border border-mist-800 p-3">
+        <p class="text-mist-500">SOURCE</p>
+        <p>TNO 模组文本</p>
+      </div>
+
+      <div class="border border-mist-800 p-3">
+        <p class="text-mist-500">STATUS</p>
+        <p>非官方项目</p>
+      </div>
+    </div>
+
+    <!-- 底部标语 -->
+    <footer class="mt-auto border-t border-mist-800 pt-4 text-sm text-mist-500">
+      <p>“秩序建立于废墟之上，而废墟从未消失。”</p>
+    </footer>
+  </section>
 </Layout>

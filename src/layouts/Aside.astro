@@ -3,13 +3,13 @@ import zh from '../../public/json/zh.json'
 const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
 ---
 
-<aside data-aside-scroll class="h-full flex-1 overflow-y-auto border-r py-4 pl-4 text-lg">
+<aside data-aside-scroll class="w-min-50 h-full flex-1 overflow-y-auto border-r py-4 pl-4 text-lg">
   <ul>
     {
       zh.map((item) => (
         <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': currentId === item.id.toString() }}>
           <a
-            href={item.id.toString()}
+            href={'/Astro-TNO/' + item.id.toString()}
             class:list={[
               'block',
               currentId === item.id.toString()
