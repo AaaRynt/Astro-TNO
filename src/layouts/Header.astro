@@ -1,9 +1,22 @@
 ---
-import { AstroIcon, Github, Languages } from '../components/svg/index.astro'
+import { Github, Languages } from '../components/svg/index.astro'
 ---
 
 <header class="flex flex-row items-center justify-between gap-4 bg-teal-950 px-4 py-2">
   <div class="flex flex-row items-center gap-2">
+    <a href="/Astro-TNO/" class="hover:underline">HOME</a>
+    <span class="text-teal-400">/</span>
+    <a href="https://github.com/AaaRynt/Astro-TNO" target="_blank" aria-label="GitHub">
+      <Github />
+    </a>
+  </div>
+  <!-- <input type="text" class="rounded-sm outline-1" /> -->
+  <div class="flex flex-row items-center gap-2">
+    <Languages />
+    <select name="pets">
+      <option value="zh">简体中文</option>
+      <option value="en">English</option>
+    </select>
     <a href="https://tno.wiki/wiki/TNOpediA" target="_blank" aria-label="TNOpediA">
       <img
         src={`${import.meta.env.BASE_URL}TNOpediA_Logo.png`}
@@ -11,22 +24,5 @@ import { AstroIcon, Github, Languages } from '../components/svg/index.astro'
         class="h-8"
       />
     </a>
-    <span class="text-teal-400">/</span>
-    <a href="https://github.com/AaaRynt/Astro-TNO" target="_blank" aria-label="GitHub">
-      <Github />
-    </a>
-    <span class="text-teal-400">/</span>
-    <a href="https://astro.build/" target="_blank" aria-label="Astro">
-      <AstroIcon />
-    </a>
-  </div>
-  <!-- <input type="text" class="rounded-sm outline-1" /> -->
-  <div class="flex flex-row gap-2">
-    <Languages />
-    <select name="pets">
-      <option value="zh">简体中文</option>
-      <option value="en">English</option>
-    </select>
-    <a href="/Astro-TNO/About" class="hover:underline">About this mod</a>
   </div>
 </header>
