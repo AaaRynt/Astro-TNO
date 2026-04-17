@@ -9,9 +9,8 @@ const next = zh[(current + 1) % len]
 
 <!-- <div class="flex w-160 flex-row justify-between gap-4"> -->
 <div class="grid grid-cols-2 gap-4 border-t border-mist-600 pt-4 text-sm">
-  <!-- prev -->
   <a
-    href={`/Astro-TNO/${prev.id}`}
+    href={`/Astro-TNO/${prev.id}/`}
     aria-label={`上一章：${prev.name.default}`}
     class="nav-item justify-start pl-8"
   >
@@ -23,9 +22,9 @@ const next = zh[(current + 1) % len]
       </h3>
     </div>
   </a>
-  <!-- next -->
+
   <a
-    href={`/Astro-TNO/${next.id}`}
+    href={`/Astro-TNO/${next.id}/`}
     aria-label={`下一章：${next.name.default}`}
     class="nav-item justify-end pr-8"
   >

@@ -58,12 +58,14 @@ const parsedParagraphs = item.desc.default.split('\\n\\n').map(parseColorTags)
 <Layout>
   <section class="flex flex-col gap-6 overflow-y-auto p-1 pt-8">
     <h2 class="text-4xl font-bold text-mist-200">{item.name.default}</h2>
-    <img
-      src={`/Astro-TNO/img/state_lore_img_${item.id}.png`}
-      class="w-160"
-      alt={item.name.default}
-      loading="lazy"
-    />
+    <div class="aspect-413/70 w-160 overflow-hidden bg-mist-800">
+      <img
+        src={`/Astro-TNO/img/state_lore_img_${item.id}.png`}
+        class="h-full w-full object-cover"
+        alt={item.name.default}
+        loading="lazy"
+      />
+    </div>
     <article class="flex w-160 flex-col gap-2 indent-8">
       {
         parsedParagraphs.map((parts) => (

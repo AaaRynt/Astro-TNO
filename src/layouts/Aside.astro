@@ -5,14 +5,14 @@ const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
 
 <aside
   data-aside-scroll
-  class="absolute left-0 h-full w-[20%] overflow-y-auto border-r py-4 pl-2 text-lg md:w-50"
+  class="absolute left-0 h-full w-[20%] overflow-y-auto overscroll-contain border-r py-4 pl-2 text-lg md:w-50"
 >
   <ul>
     {
       zh.map((item) => (
         <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': currentId === item.id.toString() }}>
           <a
-            href={'/Astro-TNO/' + item.id.toString()}
+            href={`/Astro-TNO/${item.id.toString()}/`}
             class:list={[
               'block',
               currentId === item.id.toString()
