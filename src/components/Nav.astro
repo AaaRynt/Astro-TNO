@@ -1,39 +1,34 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import { ArrowLeft, ArrowRight } from './svg/index.astro'
-const { item, zh } = Astro.props
-const len = zh.length
-const current = zh.findIndex((entry: { id: any }) => entry.id === item.id)
-const prev = zh[(current + len - 1) % len]
-const next = zh[(current + 1) % len]
+const lang = Astro.currentLocale ?? 'zh',
+  { item, json } = Astro.props,
+  len = json.length,
+  current = json.findIndex((entry: { id: any }) => entry.id === item.id),
+  prev = json[(current + len - 1) % len],
+  next = json[(current + 1) % len]
 ---
 
-<!-- <div class="flex w-160 flex-row justify-between gap-4"> -->
-<div class="grid grid-cols-2 gap-4 border-t border-mist-600 pt-4 text-sm">
+<div class="grid grid-cols-2 gap-4 border-t border-mist-600 pt-4 text-sm md:gap-12">
   <a
-    href={`/Astro-TNO/${prev.id}/`}
-    aria-label={`上一章：${prev.name.default}`}
-    class="nav-item justify-start pl-8"
+    href={getRelativeLocaleUrl(lang, `/${next.id}`)}
+    aria-label={`prev：${prev.name.default}`}
+    class="nav-item items-start pl-8"
   >
     <ArrowLeft />
-    <div class="flex flex-col gap-1">
-      <span class="text-mist-400">上一章</span>
-      <h3 class="text-2xl font-semibold text-mist-200">
-        {prev.name.default}
-      </h3>
-    </div>
+    <h3 class="text-2xl font-semibold text-mist-200">
+      {prev.name.default}
+    </h3>
   </a>
 
   <a
-    href={`/Astro-TNO/${next.id}/`}
-    aria-label={`下一章：${next.name.default}`}
-    class="nav-item justify-end pr-8"
+    href={getRelativeLocaleUrl(lang, `/${next.id}`)}
+    aria-label={`next：${next.name.default}`}
+    class="nav-item items-end pr-8"
   >
-    <div class="flex flex-col gap-1 text-right">
-      <span class="text-mist-400">下一章</span>
-      <h3 class="text-2xl font-semibold text-mist-200">
-        {next.name.default}
-      </h3>
-    </div>
     <ArrowRight />
+    <h3 class="text-2xl font-semibold text-mist-200">
+      {next.name.default}
+    </h3>
   </a>
 </div>

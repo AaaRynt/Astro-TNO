@@ -1,6 +1,10 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import zh from '../../public/json/zh.json'
-const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
+import en from '../../public/json/en.json'
+const lang = Astro.currentLocale ?? 'zh'
+const data = lang === 'en' ? en : zh
+const { id } = Astro.params
 ---
 
 <aside
@@ -9,13 +13,13 @@ const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
 >
   <ul>
     {
-      zh.map((item) => (
-        <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': currentId === item.id.toString() }}>
+      data.map((item) => (
+        <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': id === item.id.toString() }}>
           <a
-            href={`/Astro-TNO/${item.id.toString()}/`}
+            href={getRelativeLocaleUrl(lang, `/${item.id}`)}
             class:list={[
               'block',
-              currentId === item.id.toString()
+              id === item.id.toString()
                 ? 'text-xl text-black'
                 : 'text-teal-500 text-shadow-teal-400/80 hover:text-shadow-[0_0_3px]',
             ]}
@@ -27,57 +31,3 @@ const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
     }
   </ul>
 </aside>
-
-<script is:inline>
-  //THX, Codex
-  ;(() => {
-    const SELECTOR = '[data-aside-scroll]'
-    const STORAGE_KEY = 'aside-scroll-top'
-    const MANAGER_KEY = '__asideScrollManager'
-
-    const getAside = () => document.querySelector(SELECTOR)
-    const save = (el) => {
-      if (!(el instanceof HTMLElement)) return
-      sessionStorage.setItem(STORAGE_KEY, String(el.scrollTop))
-    }
-    const restore = (el) => {
-      if (!(el instanceof HTMLElement)) return
-      const saved = sessionStorage.getItem(STORAGE_KEY)
-      if (saved === null) return
-      const top = Number(saved)
-      if (Number.isNaN(top)) return
-      requestAnimationFrame(() => {
-        el.scrollTop = top
-      })
-    }
-
-    if (!window[MANAGER_KEY]) {
-      const manager = {
-        aside: null,
-        cleanup: null,
-        bind() {
-          if (typeof this.cleanup === 'function') this.cleanup()
-
-          const el = getAside()
-          this.aside = el instanceof HTMLElement ? el : null
-          if (!this.aside) {
-            this.cleanup = null
-            return
-          }
-
-          const onScroll = () => save(this.aside)
-          this.aside.addEventListener('scroll', onScroll, { passive: true })
-          this.cleanup = () => this.aside?.removeEventListener('scroll', onScroll)
-          restore(this.aside)
-        },
-      }
-
-      document.addEventListener('astro:before-swap', () => save(manager.aside))
-      document.addEventListener('astro:after-swap', () => manager.bind())
-      window.addEventListener('beforeunload', () => save(manager.aside))
-      window[MANAGER_KEY] = manager
-    }
-
-    window[MANAGER_KEY].bind()
-  })()
-</script>

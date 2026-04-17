@@ -7,6 +7,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  i18n: {
+    locales: ['zh', 'en'],
+    defaultLocale: 'zh',
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
   site: 'https://aaarynt.github.io',
   base: '/Astro-TNO/',
   output: 'static',

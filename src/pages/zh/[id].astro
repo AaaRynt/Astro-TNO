@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css'
-import zh from '../../public/json/zh.json'
-import Layout from '../layouts/Layout.astro'
-import Nav from '../components/Nav.astro'
+import '../../styles/global.css'
+import zh from '../../../public/json/zh.json'
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
 
 export async function getStaticPaths() {
   return zh.map((item) => ({
@@ -77,6 +77,6 @@ const parsedParagraphs = item.desc.default.split('\\n\\n').map(parseColorTags)
         ))
       }
     </article>
-    <Nav item={item} zh={zh} />
+    <Nav item={item} json={zh} />
   </section>
 </Layout>
