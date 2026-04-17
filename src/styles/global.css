@@ -44,7 +44,8 @@ html {
   );
 }
 
-a {
+a,
+a * {
   cursor: url('/Astro-TNO/cursor/attack_move.png'), pointer;
 }
 
