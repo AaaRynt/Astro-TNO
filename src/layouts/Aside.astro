@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import zh from '../../public/json/zh.json'
-import en from '../../public/json/en.json'
+import zh from '@/json/zh.json'
+import en from '@/json/en.json'
 const lang = Astro.currentLocale ?? 'zh'
 const data = lang === 'en' ? en : zh
 const { id } = Astro.params
