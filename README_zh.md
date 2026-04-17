@@ -10,6 +10,7 @@
 [![Logo](./public/The_New_Order_Logo.png)](https://aaarynt.github.io/Astro-TNO/zh/)
 
 这不是一个稳定的世界。
+
 _1962年_，秩序仍在运转，但其根基早已动摇。**德意志**、**日本**与**美利坚**维系着一种脆弱的均衡——它并非和平，只是尚未失控。
 
 [本站](https://aaarynt.github.io/Astro-TNO/zh/)基于[模组版本v1.9.0](https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901)，收录该[世界观](https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901)下重要城市的介绍，从权力中心到边缘殖民地。

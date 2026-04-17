@@ -1,5 +1,7 @@
 ---
 import { Github, Languages } from '@/components/svg/index.astro'
+import { Image } from 'astro:assets'
+import logo from '/public/TNOpediA_Logo.png'
 const lang = Astro.url.pathname.match(/\/(zh|en)/)?.[1] ?? 'zh'
 ---
 
@@ -19,7 +21,7 @@ const lang = Astro.url.pathname.match(/\/(zh|en)/)?.[1] ?? 'zh'
       <option value="en">English</option>
     </select>
     <a href="https://tno.wiki/wiki/TNOpediA" target="_blank" aria-label="TNOpediA">
-      <img src="/Astro-TNO//TNOpediA_Logo.png" alt="The New Order Logo" class="h-8" />
+      <Image src={logo} alt="The New Order Logo" class={'size-8'} width={32} height={32} />
     </a>
   </div>
 </header>

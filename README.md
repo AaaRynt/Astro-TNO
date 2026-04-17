@@ -10,6 +10,7 @@
 [![Logo](./public/The_New_Order_Logo.png)](https://aaarynt.github.io/Astro-TNO/en/)
 
 This is not a stable world.
+
 In _1962_, order still persists—but its foundations have already begun to fracture. **Germanic Reich**, **Japan**, and the **USA** maintain a fragile balance—one that is not peace, but merely a state that has yet to spiral out of control.
 
 Based on [mod version v1.9.0](https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901)￼, [this site](https://aaarynt.github.io/Astro-TNO/zh/) documents key cities within [this universe](https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901)￼, from centers of power to distant colonial outposts.

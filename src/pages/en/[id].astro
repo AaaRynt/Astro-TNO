@@ -69,11 +69,7 @@ const parsedParagraphs = item.desc.default.split('\n\n').map(parseColorTags)
     <article class="flex flex-col gap-2 indent-8 md:w-160">
       {
         parsedParagraphs.map((parts) => (
-          <p>
-            {parts.map((part) =>
-              part.className ? <span class={part.className}>{part.text}</span> : part.text,
-            )}
-          </p>
+          <p>{parts.map((part) => (part.className ? <span class={part.className}>{part.text}</span> : part.text))}</p>
         ))
       }
     </article>

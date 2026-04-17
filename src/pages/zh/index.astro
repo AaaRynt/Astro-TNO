@@ -1,6 +1,10 @@
 ---
 import '@/styles/global.css'
 import Header from '@/layouts/Header.astro'
+import Footer from '@/components/Footer.astro'
+import { Play } from '@/components/svg/index.astro'
+import { Image } from 'astro:assets'
+import logo from '/public/The_New_Order_Logo.png'
 ---
 
 <!doctype html>
@@ -14,36 +18,30 @@ import Header from '@/layouts/Header.astro'
   </head>
   <body class="flex h-full flex-col">
     <Header />
-    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto py-4">
+    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto p-4">
       <section class="flex flex-col gap-8">
         <header class="flex flex-col gap-4">
           <a
             href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901"
-            class="w-100 self-center"
+            class="w-60 self-center md:w-80"
             target="_blank"
             aria-label="Steam"
           >
-            <img src="/Astro-TNO//The_New_Order_Logo.png" alt="The_New_Order_Logo" />
+            <Image src={logo} alt="The New Order Logo" width={320} height={124.5} />
           </a>
           <div class="flex flex-row items-end gap-4">
             <h1
-              class="inline text-4xl font-bold tracking-wider text-teal-500 text-shadow-[0_0_0.5rem] text-shadow-teal-400/80"
+              class="inline text-2xl font-bold tracking-wider text-teal-500 text-shadow-[0_0_0.5rem] text-shadow-teal-400/80 md:text-4xl"
             >
               The New Order
-            </h1><span class="inline text-xl text-mist-400">Cities Archive</span>
+            </h1><span class="inline text-lg text-mist-400 md:text-xl">Cities Archive</span>
           </div>
-
-          <p
-            class="self-end text-sm tracking-[0.2rem] text-mist-500"
-            aria-label="CLASSIFIED ARCHIVE · 1962"
-          >
+          <p class="self-end text-sm tracking-widest text-mist-500" aria-label="CLASSIFIED ARCHIVE · 1962">
             {
               'CLASSIFIED ARCHIVE · 1962'
                 .split('')
                 .map((char, i) => (
-                  <span
-                    class={`inline-block ${i % 2 === 0 ? '-translate-y-px' : 'translate-y-px'}`}
-                  >
+                  <span class={`inline-block ${i % 2 === 0 ? '-translate-y-px' : 'translate-y-px'}`}>
                     {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))
@@ -52,50 +50,43 @@ import Header from '@/layouts/Header.astro'
         </header>
 
         <article
-          class="flex max-w-3xl flex-col gap-2 border-y border-mist-800 py-8 indent-8 leading-relaxed text-mist-300"
+          class="flex max-w-3xl flex-col gap-2 self-center border-y border-mist-800 py-6 indent-8 leading-relaxed text-mist-300"
         >
           <p>这不是一个稳定的世界。</p>
           <p>
-            1962年，秩序仍在运转，但其根基早已动摇。德意志、日本与美利坚维持着一种脆弱的均衡——它并非和平，只是尚未失控。
+            <i>1962年</i>，秩序仍在运转，但其根基早已动摇。<strong>德意志</strong>、<strong>日本</strong>与<strong
+              >美利坚</strong
+            >维系着一种脆弱的均衡——它并非和平，只是尚未失控。
           </p>
           <p>
-            本站收录该世界观下重要城市的介绍，从权力中心到边缘殖民地。每一座城市，都是秩序崩塌与权力运作的缩影。
+            <a href="https://aaarynt.github.io/Astro-TNO/zh/" class="underline">本站</a>基于<a
+              href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901"
+              class="underline">模组版本v1.9.0</a
+            >，收录该<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901" class="underline"
+              >世界观</a
+            >下重要城市的介绍，从权力中心到边缘殖民地。每一座城市，都是秩序崩塌与权力运作的缩影。
           </p>
         </article>
 
         <div class="flex flex-row items-center gap-8 pl-4">
           <a
             href={`${import.meta.env.BASE_URL}zh/1/`}
-            class="border border-mist-500 px-6 py-3 text-mist-200 transition hover:border-teal-500 hover:bg-mist-800/30"
+            class="flex items-center gap-1 border border-mist-500 px-6 py-3 text-mist-200 transition hover:border-teal-500 hover:bg-mist-800/30"
           >
-            ▶ 进入档案
+            <Play /><span class="translate-y-px">进入档案</span>
           </a>
-          <a
-            href={`${import.meta.env.BASE_URL}zh/About/`}
-            class="text-mist-500 underline-offset-4 hover:underline"
-          >
+          <a href={`${import.meta.env.BASE_URL}zh/About/`} class="text-mist-500 underline-offset-4 hover:underline">
             关于此模组
           </a>
         </div>
 
-        <footer
-          class="grid max-w-3xl gap-4 border-t border-mist-800 pt-4 text-sm text-mist-400 md:grid-cols-3"
-        >
-          <div class="border border-mist-800 p-3">
-            <p class="text-mist-500">TYPE</p>
-            <p>世界观档案</p>
-          </div>
-
-          <div class="border border-mist-800 p-3">
-            <p class="text-mist-500">SOURCE</p>
-            <p>TNO 模组文本</p>
-          </div>
-
-          <div class="border border-mist-800 p-3">
-            <p class="text-mist-500">STATUS</p>
-            <p>非官方项目</p>
-          </div>
-        </footer>
+        <Footer
+          arr={[
+            { h4: 'TYPE', p: '世界观档案' },
+            { h4: 'SOURCE', p: 'TNO 模组文本' },
+            { h4: 'STATUS', p: '非官方项目' },
+          ]}
+        />
       </section>
     </main>
   </body>
