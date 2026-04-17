@@ -5,7 +5,7 @@ const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
 
 <aside
   data-aside-scroll
-  class="absolute left-0 h-full w-[20%] overflow-y-auto overscroll-contain border-r py-4 pl-2 text-lg md:w-50"
+  class="fixed left-0 h-full w-[60%] -translate-x-full overflow-y-auto overscroll-contain border-r bg-black py-6 pl-4 text-lg transition-transform md:w-52"
 >
   <ul>
     {
@@ -16,7 +16,7 @@ const currentId = Astro.url.pathname.split('/').filter(Boolean).at(-1)
             class:list={[
               'block',
               currentId === item.id.toString()
-                ? 'text-xl text-[#061016]'
+                ? 'text-xl text-black'
                 : 'text-teal-500 text-shadow-teal-400/80 hover:text-shadow-[0_0_3px]',
             ]}
           >
