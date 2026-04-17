@@ -4,6 +4,12 @@ Astro:
   comments: 1
   reports:
     - stats:
+        blanks: 13
+        code: 65
+        comments: 0
+        blobs: {}
+      name: ./src/pages/en/[id].astro
+    - stats:
         blanks: 12
         code: 77
         comments: 0
@@ -11,22 +17,28 @@ Astro:
       name: ./src/pages/en/About.astro
     - stats:
         blanks: 4
+        code: 89
+        comments: 0
+        blobs: {}
+      name: ./src/pages/en/index.astro
+    - stats:
+        blanks: 4
         code: 56
         comments: 0
         blobs: {}
       name: ./src/pages/zh/About.astro
+    - stats:
+        blanks: 13
+        code: 65
+        comments: 0
+        blobs: {}
+      name: ./src/pages/zh/[id].astro
     - stats:
         blanks: 1
         code: 38
         comments: 0
         blobs: {}
       name: ./src/layouts/Layout.astro
-    - stats:
-        blanks: 4
-        code: 89
-        comments: 0
-        blobs: {}
-      name: ./src/pages/zh/index.astro
     - stats:
         blanks: 2
         code: 35
@@ -46,11 +58,17 @@ Astro:
         blobs: {}
       name: ./src/layouts/Aside.astro
     - stats:
-        blanks: 13
-        code: 65
+        blanks: 1
+        code: 8
         comments: 0
         blobs: {}
-      name: ./src/pages/zh/[id].astro
+      name: ./src/components/svg/index.astro
+    - stats:
+        blanks: 0
+        code: 13
+        comments: 0
+        blobs: {}
+      name: ./src/components/svg/play.astro
     - stats:
         blanks: 2
         code: 32
@@ -59,22 +77,10 @@ Astro:
       name: ./src/components/Nav.astro
     - stats:
         blanks: 0
-        code: 11
-        comments: 0
-        blobs: {}
-      name: ./src/components/svg/github.astro
-    - stats:
-        blanks: 0
         code: 13
         comments: 0
         blobs: {}
       name: ./src/components/svg/arrow-left.astro
-    - stats:
-        blanks: 0
-        code: 13
-        comments: 0
-        blobs: {}
-      name: ./src/components/svg/arrow-right.astro
     - stats:
         blanks: 1
         code: 19
@@ -83,34 +89,28 @@ Astro:
       name: ./src/components/Footer.astro
     - stats:
         blanks: 0
-        code: 17
+        code: 11
         comments: 0
         blobs: {}
-      name: ./src/components/svg/languages.astro
-    - stats:
-        blanks: 0
-        code: 13
-        comments: 0
-        blobs: {}
-      name: ./src/components/svg/play.astro
-    - stats:
-        blanks: 1
-        code: 8
-        comments: 0
-        blobs: {}
-      name: ./src/components/svg/index.astro
-    - stats:
-        blanks: 13
-        code: 65
-        comments: 0
-        blobs: {}
-      name: ./src/pages/en/[id].astro
+      name: ./src/components/svg/github.astro
     - stats:
         blanks: 4
         code: 89
         comments: 0
         blobs: {}
-      name: ./src/pages/en/index.astro
+      name: ./src/pages/zh/index.astro
+    - stats:
+        blanks: 0
+        code: 13
+        comments: 0
+        blobs: {}
+      name: ./src/components/svg/arrow-right.astro
+    - stats:
+        blanks: 0
+        code: 17
+        comments: 0
+        blobs: {}
+      name: ./src/components/svg/languages.astro
   children: {}
   inaccurate: false
 CSS:
@@ -132,27 +132,27 @@ JavaScript:
   comments: 3
   reports:
     - stats:
-        blanks: 0
-        code: 3
-        comments: 1
-        blobs: {}
-      name: ./stylelint.config.mjs
-    - stats:
         blanks: 1
         code: 24
         comments: 2
         blobs: {}
       name: ./astro.config.mjs
+    - stats:
+        blanks: 0
+        code: 3
+        comments: 1
+        blobs: {}
+      name: ./stylelint.config.mjs
   children: {}
   inaccurate: false
 JSON:
   blanks: 0
-  code: 11226
+  code: 11227
   comments: 0
   reports:
     - stats:
         blanks: 0
-        code: 35
+        code: 36
         comments: 0
         blobs: {}
       name: ./package.json
@@ -167,13 +167,13 @@ JSON:
         code: 5590
         comments: 0
         blobs: {}
-      name: ./src/json/en.json
+      name: ./src/json/zh.json
     - stats:
         blanks: 0
         code: 5590
         comments: 0
         blobs: {}
-      name: ./src/json/zh.json
+      name: ./src/json/en.json
   children: {}
   inaccurate: false
 Markdown:
@@ -233,7 +233,7 @@ SVG:
   inaccurate: false
 YAML:
   blanks: 1615
-  code: 7196
+  code: 7197
   comments: 5
   reports:
     - stats:
@@ -244,7 +244,7 @@ YAML:
       name: ./tokei.yaml
     - stats:
         blanks: 1061
-        code: 3664
+        code: 3665
         comments: 0
         blobs: {}
       name: ./pnpm-lock.yaml
@@ -264,11 +264,17 @@ YAML:
   inaccurate: false
 Total:
   blanks: 1722
-  code: 19194
+  code: 19196
   comments: 907
   reports: []
   children:
     Astro:
+      - stats:
+          blanks: 13
+          code: 65
+          comments: 0
+          blobs: {}
+        name: ./src/pages/en/[id].astro
       - stats:
           blanks: 12
           code: 77
@@ -277,22 +283,28 @@ Total:
         name: ./src/pages/en/About.astro
       - stats:
           blanks: 4
+          code: 89
+          comments: 0
+          blobs: {}
+        name: ./src/pages/en/index.astro
+      - stats:
+          blanks: 4
           code: 56
           comments: 0
           blobs: {}
         name: ./src/pages/zh/About.astro
+      - stats:
+          blanks: 13
+          code: 65
+          comments: 0
+          blobs: {}
+        name: ./src/pages/zh/[id].astro
       - stats:
           blanks: 1
           code: 38
           comments: 0
           blobs: {}
         name: ./src/layouts/Layout.astro
-      - stats:
-          blanks: 4
-          code: 89
-          comments: 0
-          blobs: {}
-        name: ./src/pages/zh/index.astro
       - stats:
           blanks: 2
           code: 35
@@ -312,11 +324,17 @@ Total:
           blobs: {}
         name: ./src/layouts/Aside.astro
       - stats:
-          blanks: 13
-          code: 65
+          blanks: 1
+          code: 8
           comments: 0
           blobs: {}
-        name: ./src/pages/zh/[id].astro
+        name: ./src/components/svg/index.astro
+      - stats:
+          blanks: 0
+          code: 13
+          comments: 0
+          blobs: {}
+        name: ./src/components/svg/play.astro
       - stats:
           blanks: 2
           code: 32
@@ -325,22 +343,10 @@ Total:
         name: ./src/components/Nav.astro
       - stats:
           blanks: 0
-          code: 11
-          comments: 0
-          blobs: {}
-        name: ./src/components/svg/github.astro
-      - stats:
-          blanks: 0
           code: 13
           comments: 0
           blobs: {}
         name: ./src/components/svg/arrow-left.astro
-      - stats:
-          blanks: 0
-          code: 13
-          comments: 0
-          blobs: {}
-        name: ./src/components/svg/arrow-right.astro
       - stats:
           blanks: 1
           code: 19
@@ -349,34 +355,28 @@ Total:
         name: ./src/components/Footer.astro
       - stats:
           blanks: 0
-          code: 17
+          code: 11
           comments: 0
           blobs: {}
-        name: ./src/components/svg/languages.astro
-      - stats:
-          blanks: 0
-          code: 13
-          comments: 0
-          blobs: {}
-        name: ./src/components/svg/play.astro
-      - stats:
-          blanks: 1
-          code: 8
-          comments: 0
-          blobs: {}
-        name: ./src/components/svg/index.astro
-      - stats:
-          blanks: 13
-          code: 65
-          comments: 0
-          blobs: {}
-        name: ./src/pages/en/[id].astro
+        name: ./src/components/svg/github.astro
       - stats:
           blanks: 4
           code: 89
           comments: 0
           blobs: {}
-        name: ./src/pages/en/index.astro
+        name: ./src/pages/zh/index.astro
+      - stats:
+          blanks: 0
+          code: 13
+          comments: 0
+          blobs: {}
+        name: ./src/components/svg/arrow-right.astro
+      - stats:
+          blanks: 0
+          code: 17
+          comments: 0
+          blobs: {}
+        name: ./src/components/svg/languages.astro
     CSS:
       - stats:
           blanks: 8
@@ -386,21 +386,21 @@ Total:
         name: ./src/styles/global.css
     JavaScript:
       - stats:
-          blanks: 0
-          code: 3
-          comments: 1
-          blobs: {}
-        name: ./stylelint.config.mjs
-      - stats:
           blanks: 1
           code: 24
           comments: 2
           blobs: {}
         name: ./astro.config.mjs
+      - stats:
+          blanks: 0
+          code: 3
+          comments: 1
+          blobs: {}
+        name: ./stylelint.config.mjs
     JSON:
       - stats:
           blanks: 0
-          code: 35
+          code: 36
           comments: 0
           blobs: {}
         name: ./package.json
@@ -415,13 +415,13 @@ Total:
           code: 5590
           comments: 0
           blobs: {}
-        name: ./src/json/en.json
+        name: ./src/json/zh.json
       - stats:
           blanks: 0
           code: 5590
           comments: 0
           blobs: {}
-        name: ./src/json/zh.json
+        name: ./src/json/en.json
     Markdown:
       - stats:
           blanks: 20
@@ -461,7 +461,7 @@ Total:
         name: ./tokei.yaml
       - stats:
           blanks: 1061
-          code: 3664
+          code: 3665
           comments: 0
           blobs: {}
         name: ./pnpm-lock.yaml
