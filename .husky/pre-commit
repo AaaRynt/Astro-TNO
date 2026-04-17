@@ -1,1 +1,4 @@
+echo "Generating tokei.yaml and exec Prettier format..."
+tokei -o yaml > tokei.yaml
+git add tokei.yaml
 pnpm exec lint-staged

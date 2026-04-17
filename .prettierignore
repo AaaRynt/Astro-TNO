@@ -4,3 +4,4 @@ raw
 !astro.config.mjs
 !*.md
 !public
+!tokei.yaml
