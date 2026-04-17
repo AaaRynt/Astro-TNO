@@ -51,7 +51,7 @@ function parseColorTags(text: string): ParsedPart[] {
   return parts
 }
 
-const parsedParagraphs = item.desc.default.split('\\n\\n').map(parseColorTags)
+const parsedParagraphs = item.desc.default.split('\n\n').map(parseColorTags)
 ---
 
 <title>{item.name.default}</title>
