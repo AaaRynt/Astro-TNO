@@ -21,7 +21,7 @@ const lang = Astro.url.pathname.match(/\/(zh|en)/)?.[1] ?? 'zh'
       <option value="en">English</option>
     </select>
     <a href="https://tno.wiki/wiki/TNOpediA" target="_blank" aria-label="TNOpediA">
-      <Image src={logo} alt="The New Order Logo" class={'size-8'} width={32} height={32} />
+      <Image src={logo} alt="The New Order Logo" class={'size-8'} width={32} height={32} loading={'eager'} />
     </a>
   </div>
 </header>

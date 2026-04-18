@@ -23,10 +23,6 @@
   background: var(--color-teal-600);
 }
 
-* {
-  cursor: url('/Astro-TNO/cursor/exploration.png'), auto;
-}
-
 html {
   font-family: Aldrich, fzrzhm, sans-serif;
   color: var(--color-mist-300);

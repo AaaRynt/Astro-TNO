@@ -17,6 +17,11 @@ const { id } = Astro.params
         <li class:list={{ 'my-1 bg-teal-600 py-1 pl-2': id === item.id.toString() }}>
           <a
             href={getRelativeLocaleUrl(lang, `/${item.id}`)}
+            aria-label={
+              typeof item.name.default === 'string' && item.name.default.trim()
+                ? item.name.default
+                : `item-${item.initials}`
+            }
             class:list={[
               'block',
               id === item.id.toString()
