@@ -18,8 +18,8 @@ import logo from '/public/The_New_Order_Logo.png'
   </head>
   <body class="flex h-full flex-col">
     <Header />
-    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto p-4">
-      <section class="flex flex-col gap-8">
+    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto px-4 py-6">
+      <section class="flex w-full max-w-3xl flex-col gap-8">
         <header class="flex flex-col gap-4">
           <a
             href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901"
@@ -31,12 +31,12 @@ import logo from '/public/The_New_Order_Logo.png'
           </a>
           <div class="flex flex-row items-end gap-4">
             <h1
-              class="inline text-2xl font-bold tracking-wider text-teal-500 text-shadow-[0_0_0.5rem] text-shadow-teal-400/80 md:text-4xl"
+              class="inline text-2xl leading-tight font-bold text-teal-500 text-shadow-[0_0_0.5rem] text-shadow-teal-400/80 md:text-4xl"
             >
               The New Order
             </h1><span class="inline text-lg text-mist-400 md:text-xl">Cities Archive</span>
           </div>
-          <p class="self-end text-sm tracking-widest text-mist-500" aria-label="CLASSIFIED ARCHIVE · 1962">
+          <p class="self-end text-sm text-mist-500" aria-label="CLASSIFIED ARCHIVE · 1962">
             {
               'CLASSIFIED ARCHIVE · 1962'
                 .split('')
@@ -49,9 +49,7 @@ import logo from '/public/The_New_Order_Logo.png'
           </p>
         </header>
 
-        <article
-          class="flex max-w-3xl flex-col gap-2 self-center border-y border-mist-800 py-6 indent-8 leading-relaxed text-mist-300"
-        >
+        <article class="prose prose-invert tno-prose max-w-none self-center border-y border-mist-800 py-6">
           <p>This is not a stable world.</p>
           <p>
             In <i>1962</i>, order still persists—but its foundations have already begun to fracture. <strong
@@ -60,22 +58,22 @@ import logo from '/public/The_New_Order_Logo.png'
             a state that has yet to spiral out of control.
           </p>
           <p>
-            Based on <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901">mod version v1.9.0</a
-            >￼, <a href="https://aaarynt.github.io/Astro-TNO/zh/">this site</a> documents key cities within
-            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901">this universe</a>￼, from centers
+            Based on <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901">mod version v1.9.0</a>,
+            <a href="https://aaarynt.github.io/Astro-TNO/en/">this site</a> documents key cities within
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2438003901">this universe</a>, from centers
             of power to distant colonial outposts. Each city serves as a reflection of collapsing order and the
             mechanisms of power that sustain it.
           </p>
         </article>
 
-        <div class="flex flex-row items-center gap-8 pl-4">
+        <div class="flex flex-row flex-wrap items-center gap-6">
           <a
             href={`${import.meta.env.BASE_URL}en/1/`}
             class="flex items-center gap-1 border border-mist-500 px-6 py-3 text-mist-200 transition hover:border-teal-500 hover:bg-mist-800/30"
           >
             <Play /><span class="translate-y-px">Enter Archives</span>
           </a>
-          <a href={`${import.meta.env.BASE_URL}zh/About/`} class="text-mist-500 underline-offset-4 hover:underline">
+          <a href={`${import.meta.env.BASE_URL}en/About/`} class="text-mist-500 underline-offset-4 hover:underline">
             About This Mod
           </a>
         </div>

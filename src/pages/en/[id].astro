@@ -56,9 +56,9 @@ const parsedParagraphs = item.desc.default.split('\n\n').map(parseColorTags)
 
 <title>{item.name.default}</title>
 <Layout>
-  <section class="flex flex-col gap-6 overflow-y-auto p-2 pt-8">
-    <h2 class="pl-4 text-4xl font-bold text-mist-200">{item.name.default}</h2>
-    <div class="aspect-413/70 overflow-hidden bg-mist-800 md:w-160">
+  <section class="flex w-full max-w-3xl flex-col gap-6 overflow-y-auto px-4 pt-8 pb-10">
+    <h2 class="text-3xl leading-tight font-bold text-mist-100 md:text-4xl">{item.name.default}</h2>
+    <div class="aspect-413/70 w-full overflow-hidden bg-mist-800">
       <img
         src={`/Astro-TNO/img/state_lore_img_${item.id}.png`}
         class="h-full w-full object-cover"
@@ -67,7 +67,7 @@ const parsedParagraphs = item.desc.default.split('\n\n').map(parseColorTags)
         height="108.5"
       />
     </div>
-    <article class="flex flex-col gap-2 indent-8 md:w-160">
+    <article class="prose prose-invert tno-prose max-w-none">
       {
         parsedParagraphs.map((parts) => (
           <p>{parts.map((part) => (part.className ? <span class={part.className}>{part.text}</span> : part.text))}</p>

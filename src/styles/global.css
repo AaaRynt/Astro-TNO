@@ -1,11 +1,15 @@
 /* stylelint-disable-next-line import-notation */
 @import 'tailwindcss';
 
+/* stylelint-disable-next-line at-rule-no-unknown */
+@plugin '@tailwindcss/typography';
+
 @font-face {
   font-family: Aldrich;
   src: url('/Astro-TNO/font/Aldrich-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -13,6 +17,7 @@
   src: url('/Astro-TNO/font/fzzhengheis.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 ::-webkit-scrollbar {
@@ -40,6 +45,11 @@ html {
   );
 }
 
+body {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
 a,
 a * {
   cursor: url('/Astro-TNO/cursor/attack_move.png'), pointer;
@@ -47,4 +57,66 @@ a * {
 
 .nav-item {
   @apply flex flex-1 flex-col gap-2 py-4 outline-1 outline-mist-500 transition outline-solid text-shadow-teal-400/80 hover:text-teal-500 hover:outline-mist-100 hover:text-shadow-[0_0_3px];
+}
+
+.tno-prose {
+  --tw-prose-body: var(--color-mist-300);
+  --tw-prose-headings: var(--color-mist-100);
+  --tw-prose-lead: var(--color-mist-300);
+  --tw-prose-links: var(--color-teal-400);
+  --tw-prose-bold: var(--color-mist-100);
+  --tw-prose-counters: var(--color-mist-500);
+  --tw-prose-bullets: var(--color-teal-500);
+  --tw-prose-hr: var(--color-mist-800);
+  --tw-prose-quotes: var(--color-mist-200);
+  --tw-prose-quote-borders: var(--color-teal-500);
+  --tw-prose-captions: var(--color-mist-500);
+  --tw-prose-code: var(--color-teal-300);
+  --tw-prose-pre-code: var(--color-mist-200);
+  --tw-prose-pre-bg: rgb(6 16 23 / 95%);
+  --tw-prose-th-borders: var(--color-mist-600);
+  --tw-prose-td-borders: var(--color-mist-800);
+
+  color: var(--color-mist-300);
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.tno-prose :where(p):not(:where(.not-prose, .not-prose *)) {
+  margin-block: 0.85em;
+  text-indent: 2em;
+}
+
+.tno-prose :where(h1, h2, h3):not(:where(.not-prose, .not-prose *)) {
+  line-height: 1.18;
+}
+
+.tno-prose :where(a):not(:where(.not-prose, .not-prose *)) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition:
+    color 150ms ease,
+    text-shadow 150ms ease;
+}
+
+.tno-prose :where(a:hover):not(:where(.not-prose, .not-prose *)) {
+  color: var(--color-teal-300);
+  text-shadow: 0 0 0.25rem var(--color-teal-400);
+}
+
+.tno-prose :where(strong):not(:where(.not-prose, .not-prose *)) {
+  font-weight: 700;
+}
+
+.tno-prose :where(i, em):not(:where(.not-prose, .not-prose *)) {
+  color: var(--color-mist-200);
+}
+
+.tno-quote {
+  border-left: 2px solid var(--color-teal-500);
+  padding: 0.75rem 0 0.75rem 1rem;
+  color: var(--color-mist-300);
+  font-style: italic;
+  line-height: 1.75;
 }

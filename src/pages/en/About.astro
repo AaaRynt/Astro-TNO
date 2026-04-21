@@ -14,17 +14,17 @@ import Header from '@/layouts/Header.astro'
   </head>
   <body class="flex h-full flex-col">
     <Header />
-    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto py-10">
-      <header class="flex w-200 flex-col gap-2 border-b border-mist-600 pb-4">
-        <h1 class="text-5xl font-bold tracking-wider text-mist-200">THE NEW ORDER</h1>
+    <main class="flex h-full flex-col items-center gap-8 overflow-y-auto px-4 py-10">
+      <header class="flex w-full max-w-3xl flex-col gap-2 border-b border-mist-600 pb-4">
+        <h1 class="text-4xl leading-tight font-bold text-mist-100 md:text-5xl">THE NEW ORDER</h1>
       </header>
-      <blockquote class="border-l-2 border-teal-500 pl-4 text-mist-300 italic">
+      <blockquote class="tno-quote w-full max-w-3xl">
         "I demolish my bridges behind me... then there is no choice but to move forward."
         <br />
         <span class="text-sm text-mist-500">— Fridtjof Nansen</span>
       </blockquote>
-      <article class="flex max-w-3xl flex-col gap-2 indent-8 leading-relaxed text-mist-300">
-        <h2 class="mb-2 text-3xl font-bold">The year is 1962. Europe survives beneath the shadow of the jackboot.</h2>
+      <article class="prose prose-invert tno-prose max-w-3xl">
+        <h2>The year is 1962. Europe survives beneath the shadow of the jackboot.</h2>
         <p>
           The Second World War did not merely destroy the old world — it forged a new one, twisted and suffocating. Born
           from ruins, sustained by tyranny, it stands as a monument to devastation. Millions have turned to dust, and
@@ -70,7 +70,7 @@ import Header from '@/layouts/Header.astro'
         <p>Or perhaps—</p>
         <p>Who, if anyone, will be the last to claim it.</p>
       </article>
-      <footer class="w-200 border-t border-mist-700 pt-4 text-sm text-mist-500">
+      <footer class="w-full max-w-3xl border-t border-mist-700 pt-4 text-sm text-mist-500">
         <p>Unofficial Fan Project · Based on Hearts of Iron IV Module Worldview Construction</p>
       </footer>
     </main>
