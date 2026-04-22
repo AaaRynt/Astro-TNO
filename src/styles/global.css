@@ -78,7 +78,7 @@ a * {
   --tw-prose-td-borders: var(--color-mist-800);
 
   color: var(--color-mist-300);
-  line-height: 1.85;
+  line-height: 1.5;
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
