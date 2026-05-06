@@ -56,11 +56,19 @@ const parsedParagraphs = item.desc.default.split('\n\n').map(parseColorTags)
 
 <title>{item.name.default}</title>
 <Layout>
-  <section class="flex w-full max-w-3xl flex-col gap-6 overflow-y-auto px-4 pt-8 pb-10">
-    <h2 class="text-3xl leading-tight font-bold text-mist-100 md:text-4xl">{item.name.default}</h2>
+  <section
+    data-pagefind-body
+    data-pagefind-filter="lang:en"
+    class="flex w-full max-w-3xl flex-col gap-6 overflow-y-auto px-4 pt-8 pb-10"
+  >
+    <span class="hidden" data-pagefind-filter="type:city">city</span>
+    <h2 data-pagefind-meta="title" class="text-3xl leading-tight font-bold text-mist-100 md:text-4xl">
+      {item.name.default}
+    </h2>
     <div class="aspect-413/70 w-full overflow-hidden bg-mist-800">
       <img
         src={`/Astro-TNO/img/state_lore_img_${item.id}.png`}
+        data-pagefind-meta="image[src], image_alt[alt]"
         class="h-full w-full object-cover"
         alt={item.name.default}
         width="640"

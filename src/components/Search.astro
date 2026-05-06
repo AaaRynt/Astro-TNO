@@ -1,0 +1,257 @@
+---
+import '@/styles/search.css'
+import { Search } from '@/components/svg/index.astro'
+
+const lang = Astro.url.pathname.match(/\/(zh|en)/)?.[1] ?? 'zh'
+const text =
+  lang === 'en'
+    ? {
+        trigger: 'Search archives',
+        title: 'Search City Archives',
+        placeholder: 'Search titles and descriptions',
+        empty: 'Type a city, place, or fragment from the archive.',
+        loading: 'Loading search index...',
+        searching: 'Searching archives...',
+        noResults: 'No matching city archives.',
+        unavailable: 'Search index is generated after build.',
+        results: 'results',
+        close: 'Close search',
+      }
+    : {
+        trigger: '搜索档案',
+        title: '搜索城市档案',
+        placeholder: '搜索标题和正文内容',
+        empty: '输入城市、地点或档案正文片段。',
+        loading: '正在载入搜索索引...',
+        searching: '正在搜索档案...',
+        noResults: '没有匹配的城市档案。',
+        unavailable: '搜索索引会在构建后生成。',
+        results: '条结果',
+        close: '关闭搜索',
+      }
+---
+
+<div class="contents">
+  <button
+    id="site-search-trigger"
+    type="button"
+    class="tno-search-trigger order-3 w-full sm:order-none sm:w-72"
+    aria-haspopup="dialog"
+    aria-controls="site-search-modal"
+  >
+    <Search />
+    <span>{text.trigger}</span>
+    <kbd>/</kbd>
+  </button>
+
+  <div
+    id="site-search-modal"
+    data-site-search
+    data-lang={lang}
+    data-pagefind-url={`${import.meta.env.BASE_URL}pagefind/pagefind.js`}
+    data-pagefind-ignore
+    class="tno-search-modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="site-search-title"
+    aria-hidden="true"
+  >
+    <button class="tno-search-backdrop" type="button" data-search-close aria-label={text.close}></button>
+    <section class="tno-search-panel">
+      <div class="tno-search-head">
+        <h2 id="site-search-title">{text.title}</h2>
+        <button class="tno-search-close" type="button" data-search-close aria-label={text.close}>×</button>
+      </div>
+      <label class="tno-search-input-wrap">
+        <Search />
+        <input
+          id="site-search-input"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder={text.placeholder}
+          data-search-input
+        />
+      </label>
+      <p class="tno-search-status" data-search-status>{text.empty}</p>
+      <div class="tno-search-results" data-search-results></div>
+    </section>
+  </div>
+</div>
+
+<script is:inline>
+  ;(() => {
+    const modal = document.querySelector('[data-site-search]')
+    const trigger = document.querySelector('#site-search-trigger')
+    if (!(modal instanceof HTMLElement) || !(trigger instanceof HTMLElement) || modal.dataset.bound === 'true') return
+    modal.dataset.bound = 'true'
+
+    const input = modal.querySelector('[data-search-input]')
+    const status = modal.querySelector('[data-search-status]')
+    const results = modal.querySelector('[data-search-results]')
+    const closeButtons = modal.querySelectorAll('[data-search-close]')
+    const lang = modal.dataset.lang || 'zh'
+    const pagefindUrl = modal.dataset.pagefindUrl || '/Astro-TNO/pagefind/pagefind.js'
+    const text =
+      lang === 'en'
+        ? {
+            empty: 'Type a city, place, or fragment from the archive.',
+            loading: 'Loading search index...',
+            searching: 'Searching archives...',
+            noResults: 'No matching city archives.',
+            unavailable: 'Search index is generated after build.',
+            results: 'results',
+          }
+        : {
+            empty: '输入城市、地点或档案正文片段。',
+            loading: '正在载入搜索索引...',
+            searching: '正在搜索档案...',
+            noResults: '没有匹配的城市档案。',
+            unavailable: '搜索索引会在构建后生成。',
+            results: '条结果',
+          }
+
+    let pagefindPromise
+    let searchTimer
+    let requestId = 0
+
+    const setStatus = (message) => {
+      if (status) status.textContent = message
+    }
+
+    const clearResults = () => {
+      if (results) results.replaceChildren()
+    }
+
+    const loadPagefind = async () => {
+      if (!pagefindPromise) {
+        setStatus(text.loading)
+        pagefindPromise = import(pagefindUrl).then(async (pagefind) => {
+          await pagefind.init?.()
+          return pagefind
+        })
+      }
+      return pagefindPromise
+    }
+
+    const openSearch = () => {
+      modal.classList.remove('hidden')
+      modal.setAttribute('aria-hidden', 'false')
+      document.body.classList.add('tno-search-open')
+      setTimeout(() => input?.focus(), 0)
+      loadPagefind()
+        .then(() => {
+          if (!input?.value.trim()) setStatus(text.empty)
+        })
+        .catch(() => setStatus(text.unavailable))
+    }
+
+    const closeSearch = () => {
+      modal.classList.add('hidden')
+      modal.setAttribute('aria-hidden', 'true')
+      document.body.classList.remove('tno-search-open')
+      trigger.focus()
+    }
+
+    const resultUrl = (url) => {
+      if (!url) return '#'
+      return url.startsWith('/Astro-TNO/') ? url : `/Astro-TNO${url.startsWith('/') ? '' : '/'}${url}`
+    }
+
+    const renderResult = (data) => {
+      const link = document.createElement('a')
+      link.className = 'tno-search-result'
+      link.href = resultUrl(data.url)
+
+      if (data.meta?.image) {
+        const image = document.createElement('img')
+        image.src = resultUrl(data.meta.image)
+        image.alt = data.meta.image_alt || ''
+        image.loading = 'lazy'
+        link.append(image)
+      }
+
+      const body = document.createElement('span')
+      body.className = 'tno-search-result-body'
+
+      const title = document.createElement('span')
+      title.className = 'tno-search-result-title'
+      title.textContent = data.meta?.title || data.title || data.url
+
+      const excerpt = document.createElement('span')
+      excerpt.className = 'tno-search-result-excerpt'
+      excerpt.innerHTML = data.excerpt || ''
+
+      body.append(title, excerpt)
+      link.append(body)
+      return link
+    }
+
+    const runSearch = async () => {
+      const query = input?.value.trim() || ''
+      const currentRequest = ++requestId
+
+      if (!query) {
+        clearResults()
+        setStatus(text.empty)
+        return
+      }
+
+      setStatus(text.searching)
+
+      try {
+        const pagefind = await loadPagefind()
+        const response = await pagefind.search(query, {
+          filters: {
+            lang,
+            type: 'city',
+          },
+        })
+        if (currentRequest !== requestId) return
+
+        const topResults = response.results.slice(0, 12)
+        const entries = await Promise.all(topResults.map((result) => result.data()))
+        if (currentRequest !== requestId) return
+
+        clearResults()
+        if (!entries.length) {
+          setStatus(text.noResults)
+          return
+        }
+
+        setStatus(`${response.results.length} ${text.results}`)
+        results?.append(...entries.map(renderResult))
+      } catch {
+        clearResults()
+        setStatus(text.unavailable)
+      }
+    }
+
+    const scheduleSearch = () => {
+      clearTimeout(searchTimer)
+      const query = input?.value.trim() || ''
+      if (query && pagefindPromise) {
+        pagefindPromise
+          .then((pagefind) => pagefind.preload?.(query, { filters: { lang, type: 'city' } }))
+          .catch(() => undefined)
+      }
+      searchTimer = setTimeout(runSearch, 180)
+    }
+
+    trigger.addEventListener('click', openSearch)
+    input?.addEventListener('input', scheduleSearch)
+    closeButtons.forEach((button) => button.addEventListener('click', closeSearch))
+    document.addEventListener('keydown', (event) => {
+      const target = event.target
+      const isTyping =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeSearch()
+      if (event.key === '/' && !isTyping && modal.classList.contains('hidden')) {
+        event.preventDefault()
+        openSearch()
+      }
+    })
+  })()
+</script>
